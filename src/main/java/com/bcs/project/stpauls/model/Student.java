@@ -1,6 +1,9 @@
 package com.bcs.project.stpauls.model;
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "student")
 public class Student {
@@ -25,33 +28,17 @@ public class Student {
     @Column(name = "gender",nullable = false)
     private String gender;
 
-    @Column(name = "parent_id",nullable = false)
-    private String parent_id;
+    @OneToOne
+    @JoinColumn(name = "parent_id", nullable = false)
+    private Parent parent;
 
-    @Column(name = "class_id",nullable = false)
-    private String class_id;
+    @OneToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private Classes classes;
 
-    public String getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(String parent_id) {
-        this.parent_id = parent_id;
-    }
-
-    public String getClass_id() {
-        return class_id;
-    }
-
-    public void setClass_id(String class_id) {
-        this.class_id = class_id;
-    }
-
-    //    @JoinColumn(name = "parent_id", referencedColumnName = "parent_id", nullable = false)
-//    private Parent parent;
-
-//    @JoinColumn(name = "class_id", referencedColumnName = "class_id", nullable = false)
-//    private Classes classes;
+    @OneToOne
+    @JoinColumn(name = "report_id")
+    private Report report;
 
 
     // Getters and Setters
@@ -103,19 +90,27 @@ public class Student {
         this.gender = gender;
     }
 
-//    public Parent getParent() {
-//        return parent;
-//    }
-//
-//    public void setParent(Parent parent) {
-//        this.parent = parent;
-//    }
+    public Parent getParent() {
+        return parent;
+    }
 
-//    public Classes getClasses() {
-//        return classes;
-//    }
-//
-//    public void setClasses(Classes classes) {
-//        this.classes = classes;
-//    }
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
+
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
+    }
+
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
+    }
 }
