@@ -29,6 +29,13 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
+    public Student addStudent(Student student) {
+        if (student.getStudent_id() != null && studentRepository.existsById(student.getStudent_id())) {
+            throw new IllegalArgumentException("Student with ID already exists");
+        }
+        return studentRepository.save(student);
+    }
+
     // Delete student by ID
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);

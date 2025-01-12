@@ -29,11 +29,11 @@ public class Student {
     private String gender;
 
     @OneToOne
-    @JoinColumn(name = "parent_id", nullable = false)
+    @JoinColumn(name = "parent_id")
     private Parent parent;
 
     @OneToOne
-    @JoinColumn(name = "class_id", nullable = false)
+    @JoinColumn(name = "class_id")
     private Classes classes;
 
     @OneToOne

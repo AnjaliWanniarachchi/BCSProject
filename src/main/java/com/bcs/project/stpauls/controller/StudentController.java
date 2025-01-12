@@ -36,8 +36,18 @@ public class StudentController {
         return student.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // Add Student (exclusive)
+    @PostMapping("/add-student")
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        try {
+            return ResponseEntity.ok(studentService.addStudent(student));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     // Delete Student by ID
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-student/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return ResponseEntity.noContent().build();
