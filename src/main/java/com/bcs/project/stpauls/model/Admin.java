@@ -25,13 +25,13 @@ public class Admin {
     private String lastName;
 
 
-    @Column(name = " email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = " phone_number", nullable = false)
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @Column(name = " desgnation", nullable = false)
+    @Column(name = "desgnation", nullable = false)
     private String designation;
 
     @Column(name = "hire_date", nullable = false)
