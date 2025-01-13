@@ -26,11 +26,11 @@ public class AuthenticationService {
         this.authenticationManager = authenticationManager;
     }
 
-    public AuthenticationResponse register(User reqest){
+    public AuthenticationResponse register(User request){
         User user = new User();
-        user.setUserName(reqest.getUserName());
-        user.setPassword(passwordEncoder.encode(reqest.getPassword()));
-        user.setRole(reqest.getRole());
+        user.setUsername(request.getUsername());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(request.getRole());
         user = repository.save(user);
         String token = jwtService.generateToken(user);
         return new AuthenticationResponse(token);
@@ -41,8 +41,7 @@ public class AuthenticationService {
                 request.getUsername(),
                 request.getPassword()
         ));
-
-        User user = repository.findByUsername(request.getUserName()).orElseThrow();
+        User user = repository.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.generateToken(user);
         return new AuthenticationResponse(token);
     }

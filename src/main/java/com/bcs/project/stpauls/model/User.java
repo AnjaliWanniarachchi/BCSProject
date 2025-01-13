@@ -36,11 +36,7 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getUserName() {
-        return username;
-    }
-
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -55,7 +51,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return this.username;
     }
 
     @Override
