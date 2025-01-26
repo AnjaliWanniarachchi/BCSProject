@@ -28,6 +28,9 @@ public class Student {
     @Column(name = "gender",nullable = false)
     private String gender;
 
+    @Column(name = "status",nullable = false)
+    private String status;
+
     @OneToOne
     @JoinColumn(name = "parent_id")
     private Parent parent;
@@ -112,5 +115,13 @@ public class Student {
 
     public void setReport(Report report) {
         this.report = report;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
