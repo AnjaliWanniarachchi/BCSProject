@@ -2,6 +2,8 @@ package com.bcs.project.stpauls.service;
 
 import com.bcs.project.stpauls.model.Batch;
 import com.bcs.project.stpauls.repository.BatchRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.util.Optional;
 @Service
 public class BatchService {
 
+    private static final Log log = LogFactory.getLog(BatchService.class);
     @Autowired
     private BatchRepository batchRepository;
 
@@ -26,7 +29,16 @@ public class BatchService {
 
     // Get batch by ID
     public Optional<Batch> getBatchById(Long id) {
-        return batchRepository.findById(id);
+        if (id == null || id == 0) {
+            throw new IllegalArgumentException("Invalid ID provided.");
+        }
+        System.out.println("trying to get batch with ID: " + id);
+        Optional<Batch> batch = batchRepository.findById(id);
+        System.out.println("Batch object" + batch);
+        if (!batch.isPresent()) {
+            return Optional.empty();  // Or throw a custom exception
+        }
+        return batch;
     }
 
     public Batch addBatch(Batch batch) {

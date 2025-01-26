@@ -20,13 +20,13 @@ public class Teacher {
     @Column(name = "email",nullable = false)
     private String  email;
 
-    @Column(name = "phone_number",nullable = false)
+    @Column(name = "phone_number")
     private String  phoneNumber;
 
-    @Column(name = "designation",nullable = false)
+    @Column(name = "designation")
     private String designation;
 
-    @Column(name = "hire_date",nullable = false)
+    @Column(name = "hire_date")
     private String hireDate;
 
     // Getters and Setters

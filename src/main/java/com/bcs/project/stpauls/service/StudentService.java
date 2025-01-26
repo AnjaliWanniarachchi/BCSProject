@@ -2,20 +2,15 @@ package com.bcs.project.stpauls.service;
 
 import com.bcs.project.stpauls.model.Student;
 import com.bcs.project.stpauls.repository.StudentRepository;
-import jakarta.persistence.EntityNotFoundException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 public class StudentService {
 
-    private static final Log log = LogFactory.getLog(StudentService.class);
     @Autowired
     private StudentRepository studentRepository;
 

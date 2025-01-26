@@ -1,7 +1,6 @@
 package com.bcs.project.stpauls.controller;
 
 import com.bcs.project.stpauls.model.Batch;
-import com.bcs.project.stpauls.model.Batch;
 import com.bcs.project.stpauls.service.BatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +31,11 @@ public class BatchController {
     // Get Batch by ID
     @GetMapping("/get-batch/{id}")
     public ResponseEntity<Batch> getBatchById(@PathVariable Long id) {
+        System.out.println("Fetching batch with ID: " + id);
+        if (id == 0) {
+            return ResponseEntity.badRequest().body(null);  // Prevent fetching with an invalid ID
+        }
+
         Optional<Batch> batch = batchService.getBatchById(id);
         return batch.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
