@@ -9,15 +9,7 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long teacher_id;
-    //CREATE TABLE teacher (
-    //    teacher_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    first_name VARCHAR(100) NOT NULL,
-    //    last_name VARCHAR(100) NOT NULL,
-    //    email VARCHAR(100) UNIQUE,
-    //    phone_number VARCHAR(15) UNIQUE,
-    //    desgnation VARCHAR(100),
-    //    hire_date DATE NOT NULL
-    //);
+
     @Column(name = "first_name",nullable = false)
     private String firstName;
 
@@ -25,20 +17,17 @@ public class Teacher {
     private String lastName;
 
 
-    @Column(name = " email",nullable = false)
+    @Column(name = "email",nullable = false)
     private String  email;
 
-    @Column(name = " phone_number",nullable = false)
+    @Column(name = "phone_number",nullable = false)
     private String  phoneNumber;
 
-    @Column(name = " desgnation",nullable = false)
+    @Column(name = "designation",nullable = false)
     private String designation;
 
     @Column(name = "hire_date",nullable = false)
     private String hireDate;
-
-
-
 
     // Getters and Setters
 

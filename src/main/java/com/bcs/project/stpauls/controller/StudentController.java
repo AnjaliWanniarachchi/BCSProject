@@ -1,7 +1,9 @@
 package com.bcs.project.stpauls.controller;
 
 import com.bcs.project.stpauls.model.Student;
+import com.bcs.project.stpauls.model.Teacher;
 import com.bcs.project.stpauls.service.StudentService;
+import com.bcs.project.stpauls.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,7 @@ public class StudentController {
     private StudentService studentService;
 
     // Create or Update Student
-    @PostMapping
+    @PostMapping("/save-student")
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.saveOrUpdateStudent(student));
     }
@@ -29,7 +31,7 @@ public class StudentController {
     }
 
     // Get Student by ID
-    @GetMapping("/{id}")
+    @GetMapping("/get-student/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         Optional<Student> student = studentService.getStudentById(id);
         return student.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
