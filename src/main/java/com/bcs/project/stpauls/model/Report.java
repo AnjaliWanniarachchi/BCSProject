@@ -9,27 +9,17 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long    report_id;
-    // CREATE TABLE report (
-    //    report_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    report_name VARCHAR(100) NOT NULL,
-    //    teacher_id INT,
-    //    student_id INT,
-    //    FOREIGN KEY (student_id) REFERENCES student(student_id) ON DELETE SET NULL,
-    //    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id) ON DELETE SET NULL,
-    //    feedback TEXTeacher(teacher_id) ON DELETE SET NULL
-    //);
-    @Column(name = "report_name",nullable = false)
+    private Long report_id;
+
+    @Column(name = "report_name", nullable = false)
     private String reportName;
 
-
     @OneToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
-    @ManyToOne
-    @JoinColumn(name="cart_id", nullable=false)
-    private Student student;
+    @Column(name="feedback")
+    private String feedback;
 
     // Getters and Setters
 
@@ -58,11 +48,11 @@ public class Report {
         this.teacher = teacher;
     }
 
-    public Student getStudent() {
-        return student;
+    public String getFeedback() {
+        return feedback;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }

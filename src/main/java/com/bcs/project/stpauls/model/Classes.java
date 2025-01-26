@@ -9,28 +9,19 @@ public class Classes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long   class_id;
-    // CREATE TABLE class (
-    //    class_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    class_name VARCHAR(100) NOT NULL,
-    //    batch_id INT,
-    //    teacher_id INT,
-    //           FOREIGN KEY (batch_id) REFERENCES batch(batch_id) ON DELETE SET NULL,
-    //    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id) ON DELETE SET NULL
-    //);
+
     @Column(name = "class_name",nullable = false)
     private String className;
 
-
     @OneToOne
-    @JoinColumn(name = "batch_id", nullable = false)
+    @JoinColumn(name = "batch_id")
     private Batch batch;
 
     @OneToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     // Getters and Setters
-
 
     public Long getClass_id() {
         return class_id;

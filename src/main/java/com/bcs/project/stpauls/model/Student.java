@@ -11,7 +11,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long student_id;
-//first_name, last_name, date_of_birth, enrollment_date,gender,parent_id,class_id
+
     @Column(name = "first_name",nullable = false)
     private String firstName;
 

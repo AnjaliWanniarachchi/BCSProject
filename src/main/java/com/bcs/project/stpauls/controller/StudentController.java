@@ -33,6 +33,11 @@ public class StudentController {
     // Get Student by ID
     @GetMapping("/get-student/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
+        System.out.println("Fetching student with ID: " + id);
+        if (id == 0) {
+            return ResponseEntity.badRequest().body(null);  // Prevent fetching with an invalid ID
+        }
+
         Optional<Student> student = studentService.getStudentById(id);
         return student.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -52,5 +57,26 @@ public class StudentController {
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/edit-student")
+    public ResponseEntity<Student> editStudent(@RequestBody Student student) {
+        try {
+            // Check if the student exists by ID
+            Optional<Student> existingStudent = studentService.getStudentById(student.getStudent_id());
+
+            if (!existingStudent.isPresent()) {
+                // Return a 404 if the student doesn't exist
+                return ResponseEntity.notFound().build();
+            }
+
+            // Update the student information
+            Student updatedStudent = studentService.saveOrUpdateStudent(student);
+
+            // Return the updated student
+            return ResponseEntity.ok(updatedStudent);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 }

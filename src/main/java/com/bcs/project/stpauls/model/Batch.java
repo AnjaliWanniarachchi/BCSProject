@@ -10,20 +10,15 @@ public class Batch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  batch_id;
-    //  batch_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    batch_name VARCHAR(100) NOT NULL,
-    //    start_date DATE,
-    //    end_date DATE
+
     @Column(name = " batch_name",nullable = false)
     private String batchName;
 
-    @Column(name = "start_date",nullable = false)
+    @Column(name = "start_date")
     private String startDate;
 
-
-    @Column(name = " end_date",nullable = false)
+    @Column(name = " end_date")
     private String  endDate;
-
 
     // Getters and Setters
 

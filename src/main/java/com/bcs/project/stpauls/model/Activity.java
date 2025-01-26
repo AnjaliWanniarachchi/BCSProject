@@ -8,59 +8,49 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long  notification_id;
-    // CREATE TABLE notification (
-    //    notification_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    notification_description TEXT NOT NULL,
-    //    activity_id INT,
-    //    student_id INT,
-    //    FOREIGN KEY (activity_id) REFERENCES activity(activity_id) ON DELETE SET NULL,
-    //    FOREIGN KEY (student_id)
-    @Column(name = " notification_description",nullable = false)
-    private String notificationDescription;
+    private Long  activity_id;
 
-    @Column(name = "activity_id",nullable = false)
-    private String activity_id;
+    @Column(name = "activity_name",nullable = false)
+    private String activity_name;
 
-
-
+    @Column(name = "activity_description")
+    private String activity_description;
 
     @OneToOne
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
+    @JoinColumn(name = "batch_id")
+    private Batch batch;
 
     // Getters and Setters
 
-
-    public Long getNotification_id() {
-        return notification_id;
-    }
-
-    public void setNotification_id(Long notification_id) {
-        this.notification_id = notification_id;
-    }
-
-    public String getActivity_id() {
+    public Long getActivity_id() {
         return activity_id;
     }
 
-    public void setActivity_id(String activity_id) {
+    public void setActivity_id(Long activity_id) {
         this.activity_id = activity_id;
     }
 
-    public String getNotificationDescription() {
-        return notificationDescription;
+    public String getActivity_name() {
+        return activity_name;
     }
 
-    public void setNotificationDescription(String notificationDescription) {
-        this.notificationDescription = notificationDescription;
+    public void setActivity_name(String activity_name) {
+        this.activity_name = activity_name;
     }
 
-    public Student getStudent() {
-        return student;
+    public String getActivity_description() {
+        return activity_description;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setActivity_description(String activity_description) {
+        this.activity_description = activity_description;
+    }
+
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
     }
 }

@@ -5,14 +5,6 @@ import jakarta.persistence.*;
 @Table(name = "parent")
 public class Parent {
 
-    //parent (
-    //    parent_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    first_name VARCHAR(100) NOT NULL,
-    //    last_name VARCHAR(100) NOT NULL,
-    //    email VARCHAR(100) UNIQUE,
-    //    phone_number VARCHAR(15),
-    //    address TEXT
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long parent_id;
@@ -24,13 +16,13 @@ public class Parent {
     private String lastName;
 
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
     private String phone_number;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
     //getters and setters

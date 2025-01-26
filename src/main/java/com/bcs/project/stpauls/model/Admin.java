@@ -9,15 +9,7 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long admin_id;
-    //admin_user (
-    //    admin_id INT AUTO_INCREMENT PRIMARY KEY,
-    //    first_name VARCHAR(100) NOT NULL,
-    //    last_name VARCHAR(100) NOT NULL,
-    //    email VARCHAR(100) UNIQUE,
-    //    phone_number VARCHAR(15) UNIQUE,
-    //    desgnation VARCHAR(100),
-    //    hire_date DATE NOT NULL
-    //);
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 

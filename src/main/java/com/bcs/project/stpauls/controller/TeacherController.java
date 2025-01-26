@@ -1,6 +1,7 @@
 package com.bcs.project.stpauls.controller;
 
 import com.bcs.project.stpauls.model.Teacher;
+import com.bcs.project.stpauls.model.Teacher;
 import com.bcs.project.stpauls.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +50,27 @@ public class TeacherController {
     public ResponseEntity<Void> deleteTeacher(@PathVariable Long id) {
         teacherService.deleteTeacher(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/edit-teacher")
+    public ResponseEntity<Teacher> editTeacher(@RequestBody Teacher teacher) {
+        try {
+            // Check if the teacher exists by ID
+            Optional<Teacher> existingTeacher = teacherService.getTeacherById(teacher.getTeacher_id());
+
+            if (!existingTeacher.isPresent()) {
+                // Return a 404 if the teacher doesn't exist
+                return ResponseEntity.notFound().build();
+            }
+
+            // Update the teacher information
+            Teacher updatedTeacher = teacherService.saveOrUpdateTeacher(teacher);
+
+            // Return the updated teacher
+            return ResponseEntity.ok(updatedTeacher);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 
 }
