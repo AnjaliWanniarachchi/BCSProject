@@ -15,10 +15,6 @@ public class Notification {
 
 
     @OneToOne
-    @JoinColumn(name = "activity_id", nullable = false)
-    private Activity activity;
-
-    @OneToOne
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
@@ -37,14 +33,6 @@ public class Notification {
 
     public void setNotificationDescription(String notificationDescription) {
         this.notificationDescription = notificationDescription;
-    }
-
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public void setActivity(Activity activity) {
-        this.activity = activity;
     }
 
     public Student getStudent() {

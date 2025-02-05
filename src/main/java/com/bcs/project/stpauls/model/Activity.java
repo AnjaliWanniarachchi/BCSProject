@@ -16,9 +16,13 @@ public class Activity {
     @Column(name = "activity_description")
     private String activity_description;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "batch_id")
     private Batch batch;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     // Getters and Setters
 
@@ -52,5 +56,13 @@ public class Activity {
 
     public void setBatch(Batch batch) {
         this.batch = batch;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

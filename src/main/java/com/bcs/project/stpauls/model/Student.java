@@ -35,14 +35,6 @@ public class Student {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
-    @OneToOne
-    @JoinColumn(name = "class_id")
-    private Classes classes;
-
-    @OneToOne
-    @JoinColumn(name = "report_id")
-    private Report report;
-
 
     // Getters and Setters
     public Long getStudent_id() {
@@ -99,22 +91,6 @@ public class Student {
 
     public void setParent(Parent parent) {
         this.parent = parent;
-    }
-
-    public Classes getClasses() {
-        return classes;
-    }
-
-    public void setClasses(Classes classes) {
-        this.classes = classes;
-    }
-
-    public Report getReport() {
-        return report;
-    }
-
-    public void setReport(Report report) {
-        this.report = report;
     }
 
     public String getStatus() {

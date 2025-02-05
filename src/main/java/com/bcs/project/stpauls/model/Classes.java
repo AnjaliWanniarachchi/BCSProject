@@ -13,13 +13,13 @@ public class Classes {
     @Column(name = "class_name",nullable = false)
     private String className;
 
-    @OneToOne
-    @JoinColumn(name = "batch_id")
-    private Batch batch;
-
-    @OneToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+//    @OneToOne
+//    @JoinColumn(name = "batch_id")
+//    private Batch batch;
+//
+//    @OneToOne
+//    @JoinColumn(name = "teacher_id")
+//    private Teacher teacher;
 
     // Getters and Setters
 
@@ -39,19 +39,19 @@ public class Classes {
         this.className = className;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public Batch getBatch() {
-        return batch;
-    }
-
-    public void setBatch(Batch batch) {
-        this.batch = batch;
-    }
+//    public Teacher getTeacher() {
+//        return teacher;
+//    }
+//
+//    public void setTeacher(Teacher teacher) {
+//        this.teacher = teacher;
+//    }
+//
+//    public Batch getBatch() {
+//        return batch;
+//    }
+//
+//    public void setBatch(Batch batch) {
+//        this.batch = batch;
+//    }
 }
