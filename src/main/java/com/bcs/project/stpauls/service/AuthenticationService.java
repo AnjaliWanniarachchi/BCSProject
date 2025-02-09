@@ -2,6 +2,7 @@ package com.bcs.project.stpauls.service;
 
 import com.bcs.project.stpauls.controller.AuthenticationController;
 import com.bcs.project.stpauls.model.AuthenticationResponse;
+import com.bcs.project.stpauls.model.PasswordResetRequest;
 import com.bcs.project.stpauls.model.User;
 import com.bcs.project.stpauls.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,4 +46,18 @@ public class AuthenticationService {
         String token = jwtService.generateToken(user);
         return new AuthenticationResponse(token);
     }
+
+    public void resetPassword(PasswordResetRequest request) {
+        Optional<User> userOptional = repository.findByUsername(request.getUser());
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setPassword(request.getNewPassword()); // Ideally, hash the password
+            repository.save(user);
+        } else {
+            throw new RuntimeException("User not found");
+        }
+    }
+
+
+
 }
