@@ -1,0 +1,27 @@
+package com.bcs.project.stpauls.controller;
+
+import com.bcs.project.stpauls.model.AuthenticationResponse;
+import com.bcs.project.stpauls.model.PasswordResetRequest;
+import com.bcs.project.stpauls.model.User;
+import com.bcs.project.stpauls.service.AuthenticationService;
+import com.bcs.project.stpauls.service.UserDetailsServiceImp;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
+
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
+public class UserController {
+    private final UserDetailsServiceImp userDetailsService;
+
+    public UserController(UserDetailsServiceImp userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+    @GetMapping("/get-user-by-email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        Optional<User> user = userDetailsService.getUserByEmail(email);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+}

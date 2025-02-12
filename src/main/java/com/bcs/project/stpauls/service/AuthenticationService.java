@@ -48,16 +48,18 @@ public class AuthenticationService {
     }
 
     public void resetPassword(PasswordResetRequest request) {
-        Optional<User> userOptional = repository.findByUsername(request.getUser());
+        Optional<User> userOptional = repository.findByEmail(request.getEmail());
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            user.setPassword(request.getNewPassword()); // Ideally, hash the password
-            repository.save(user);
-        } else {
+            if(request.getToken().equals(user.getToken())){
+                user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+                repository.save(user);
+            } else {
+                throw new RuntimeException("User token is not valid");
+            }
+        }
+        else {
             throw new RuntimeException("User not found");
         }
     }
-
-
-
 }

@@ -4,6 +4,7 @@ public class PasswordResetRequest {
     private String user;
     private String newPassword;
     private String token;
+    private String email;
 
     public String getUser() {
         return user;
@@ -27,5 +28,13 @@ public class PasswordResetRequest {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
