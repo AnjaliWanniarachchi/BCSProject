@@ -27,6 +27,10 @@ public class UserDetailsServiceImp implements UserDetailsService {
         return repository.findByEmail(email);
     }
 
+    public Optional<User> getUserByUserName(String username) {
+        return repository.findByUsername(username);
+    }
+
     public boolean updateUserToken(String email, String newToken) {
         Optional<User> optionalUser = repository.findByEmail(email);
 

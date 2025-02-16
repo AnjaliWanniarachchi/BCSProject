@@ -1,6 +1,5 @@
 package com.bcs.project.stpauls.service;
 
-import com.bcs.project.stpauls.controller.AuthenticationController;
 import com.bcs.project.stpauls.model.AuthenticationResponse;
 import com.bcs.project.stpauls.model.PasswordResetRequest;
 import com.bcs.project.stpauls.model.User;
@@ -30,6 +29,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(User request){
         User user = new User();
         user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(request.getRole());
         user = repository.save(user);

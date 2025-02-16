@@ -39,7 +39,7 @@ public class StudentService {
     }
 
     public Student addStudent(Student student) {
-        if (student.getStudent_id() != null && studentRepository.existsById(student.getStudent_id())) {
+        if (student.getStudentId() != null && studentRepository.existsById(student.getStudentId())) {
             throw new IllegalArgumentException("Student with ID already exists");
         }
         return studentRepository.save(student);

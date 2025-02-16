@@ -24,4 +24,10 @@ public class UserController {
         Optional<User> user = userDetailsService.getUserByEmail(email);
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/get-user-by-username/{username}")
+    public ResponseEntity<User> getUserByUserName(@PathVariable String username) {
+        Optional<User> user = userDetailsService.getUserByUserName(username);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

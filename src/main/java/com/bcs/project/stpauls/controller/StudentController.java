@@ -63,7 +63,7 @@ public class StudentController {
     public ResponseEntity<Student> editStudent(@RequestBody Student student) {
         try {
             // Check if the student exists by ID
-            Optional<Student> existingStudent = studentService.getStudentById(student.getStudent_id());
+            Optional<Student> existingStudent = studentService.getStudentById(student.getStudentId());
 
             if (!existingStudent.isPresent()) {
                 // Return a 404 if the student doesn't exist

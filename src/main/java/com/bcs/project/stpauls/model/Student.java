@@ -10,7 +10,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long student_id;
+    private Long studentId;
 
     @Column(name = "first_name",nullable = false)
     private String firstName;
@@ -35,14 +35,12 @@ public class Student {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
-
-    // Getters and Setters
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public String getFirstName() {

@@ -7,16 +7,16 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long payment_id;
+    private Long paymentId;
 
     @Enumerated(value = EnumType.STRING)
-    private PaymentType payment_type;
+    private PaymentType paymentType;
 
     @Column(name = "payment_year", nullable = false)
-    private String payment_year;
+    private String paymentYear;
 
     @Column(name = "payment_month", nullable = false)
-    private String payment_month;
+    private String paymentMonth;
 
     @Column(name = "amount", nullable = false)
     private Long amount;
@@ -25,39 +25,39 @@ public class Payment {
     private Boolean paid;
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    public Long getPayment_id() {
-        return payment_id;
+    public Long getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayment_id(Long payment_id) {
-        this.payment_id = payment_id;
+    public void setPaymentId(Long paymentId) {
+        this.paymentId = paymentId;
     }
 
-    public PaymentType getPayment_type() {
-        return payment_type;
+    public PaymentType getPaymentType() {
+        return paymentType;
     }
 
-    public void setPayment_type(PaymentType payment_type) {
-        this.payment_type = payment_type;
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
     }
 
-    public String getPayment_year() {
-        return payment_year;
+    public String getPaymentYear() {
+        return paymentYear;
     }
 
-    public void setPayment_year(String payment_year) {
-        this.payment_year = payment_year;
+    public void setPaymentYear(String paymentYear) {
+        this.paymentYear = paymentYear;
     }
 
-    public String getPayment_month() {
-        return payment_month;
+    public String getPaymentMonth() {
+        return paymentMonth;
     }
 
-    public void setPayment_month(String payment_month) {
-        this.payment_month = payment_month;
+    public void setPaymentMonth(String paymentMonth) {
+        this.paymentMonth = paymentMonth;
     }
 
     public Long getAmount() {

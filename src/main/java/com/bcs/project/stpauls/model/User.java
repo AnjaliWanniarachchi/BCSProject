@@ -22,15 +22,17 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "token", nullable = false)
+    @Column(name = "token")
     private String token;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    @Column(name = "reference_id")
+    private String referenceId;
     // Getters and Setters
 
     public Long getId() {
@@ -108,5 +110,13 @@ public class User implements UserDetails {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getReferenceId() {
+        return referenceId;
+    }
+
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
     }
 }

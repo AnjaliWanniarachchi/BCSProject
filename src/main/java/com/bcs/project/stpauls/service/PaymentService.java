@@ -5,6 +5,7 @@ import com.bcs.project.stpauls.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,8 +39,22 @@ public class PaymentService {
         return payment;
     }
 
+    // Get payment by ID
+    public List<Payment> getPaymentByStudentId(Long studentId) {
+        if (studentId == null || studentId == 0) {
+            throw new IllegalArgumentException("Invalid ID provided.");
+        }
+        System.out.println("trying to get payment with ID: " + studentId);
+        List<Payment> payments = paymentRepository.findByStudent_StudentId(studentId);
+        System.out.println("Payment object" + payments);
+        if (payments.isEmpty()) {
+            return Collections.emptyList();  // Return an empty list instead of Optional.empty()
+        }
+        return payments;
+    }
+
     public Payment addPayment(Payment payment) {
-        if (payment.getPayment_id() != null && paymentRepository.existsById(payment.getPayment_id())) {
+        if (payment.getPaymentId() != null && paymentRepository.existsById(payment.getPaymentId())) {
             throw new IllegalArgumentException("Payment with ID already exists");
         }
         return paymentRepository.save(payment);
