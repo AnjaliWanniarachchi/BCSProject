@@ -35,6 +35,10 @@ public class Student {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
+    @ManyToOne
+    @JoinColumn(name = "class_id", referencedColumnName = "class_id")
+    private Classes classes;
+
     public Long getStudentId() {
         return studentId;
     }
@@ -97,5 +101,13 @@ public class Student {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
     }
 }

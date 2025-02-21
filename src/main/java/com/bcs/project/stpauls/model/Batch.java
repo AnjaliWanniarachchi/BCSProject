@@ -3,6 +3,8 @@ package com.bcs.project.stpauls.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "batch")
 public class Batch {
@@ -19,6 +21,9 @@ public class Batch {
 
     @Column(name = " end_date")
     private String  endDate;
+
+    @OneToMany(mappedBy = "batch")
+    private List<Classes> classes;
 
     // Getters and Setters
 
@@ -53,5 +58,13 @@ public class Batch {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public List<Classes> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Classes> classes) {
+        this.classes = classes;
     }
 }
