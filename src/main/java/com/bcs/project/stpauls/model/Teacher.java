@@ -29,6 +29,10 @@ public class Teacher {
     @Column(name = "hire_date")
     private String hireDate;
 
+    @OneToOne
+    @JoinColumn(name = "class_id")
+    private Classes classes;
+
     // Getters and Setters
 
     public Long getTeacher_id() {
@@ -85,5 +89,13 @@ public class Teacher {
 
     public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
+    }
+
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
     }
 }

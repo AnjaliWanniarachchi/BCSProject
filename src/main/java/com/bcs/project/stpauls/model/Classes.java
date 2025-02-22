@@ -16,17 +16,9 @@ public class Classes {
     @Column(name = "class_name",nullable = false)
     private String className;
 
-    @ManyToOne
-    @JoinColumn(name = "batch_id", referencedColumnName = "batch_id")
-    private Batch batch;
-
-
-    @OneToMany(mappedBy = "classes")
-    private List<Student> student;
-
     @OneToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
+    @JoinColumn(name = "batch_id")
+    private Batch batch;
 
     //number of students
 
@@ -52,21 +44,5 @@ public class Classes {
 
     public void setBatch(Batch batch) {
         this.batch = batch;
-    }
-
-    public List<Student> getStudent() {
-        return student;
-    }
-
-    public void setStudent(List<Student> student) {
-        this.student = student;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
     }
 }

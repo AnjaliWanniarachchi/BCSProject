@@ -8,21 +8,17 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long  activity_id;
+    private Long activity_id;
 
     @Column(name = "activity_name",nullable = false)
-    private String activity_name;
+    private String activityName;
 
     @Column(name = "activity_description")
-    private String activity_description;
+    private String activityDescription;
 
     @ManyToOne
     @JoinColumn(name = "batch_id")
     private Batch batch;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
 
     // Getters and Setters
 
@@ -34,20 +30,20 @@ public class Activity {
         this.activity_id = activity_id;
     }
 
-    public String getActivity_name() {
-        return activity_name;
+    public String getActivityName() {
+        return activityName;
     }
 
-    public void setActivity_name(String activity_name) {
-        this.activity_name = activity_name;
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
     }
 
-    public String getActivity_description() {
-        return activity_description;
+    public String getActivityDescription() {
+        return activityDescription;
     }
 
-    public void setActivity_description(String activity_description) {
-        this.activity_description = activity_description;
+    public void setActivityDescription(String activityDescription) {
+        this.activityDescription = activityDescription;
     }
 
     public Batch getBatch() {
@@ -56,13 +52,5 @@ public class Activity {
 
     public void setBatch(Batch batch) {
         this.batch = batch;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 }
