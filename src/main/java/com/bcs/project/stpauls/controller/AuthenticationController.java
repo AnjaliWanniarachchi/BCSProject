@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@CrossOrigin(origins = "http://stpaulspreschool.s3-website.eu-north-1.amazonaws.com:4200")
+@CrossOrigin(origins = "http://stpaulspreschool.s3-website.eu-north-1.amazonaws.com")
 @RestController
 public class AuthenticationController {
     private final AuthenticationService authService;
