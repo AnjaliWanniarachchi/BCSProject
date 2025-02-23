@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://stpaulspreschool.s3-website.eu-north-1.amazonaws.com:4200")
 @RestController
 public class PaymentController {
 
