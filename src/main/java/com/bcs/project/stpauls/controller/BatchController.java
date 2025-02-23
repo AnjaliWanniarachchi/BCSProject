@@ -33,14 +33,14 @@ public class BatchController {
     public ResponseEntity<Batch> getBatchById(@PathVariable Long id) {
         System.out.println("Fetching batch with ID: " + id);
         if (id == 0) {
-            return ResponseEntity.badRequest().body(null);  // Prevent fetching with an invalid ID
+            return ResponseEntity.badRequest().body(null);
         }
 
         Optional<Batch> batch = batchService.getBatchById(id);
         return batch.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Batch (exclusive)
+    // Add Batch
     @PostMapping("/add-batch")
     public ResponseEntity<Batch> addBatch(@RequestBody Batch batch) {
         try {
@@ -60,18 +60,13 @@ public class BatchController {
     @PutMapping("/edit-batch")
     public ResponseEntity<Batch> editBatch(@RequestBody Batch batch) {
         try {
-            // Check if the batch exists by ID
             Optional<Batch> existingBatch = batchService.getBatchById(batch.getBatch_id());
 
             if (!existingBatch.isPresent()) {
-                // Return a 404 if the batch doesn't exist
                 return ResponseEntity.notFound().build();
             }
-
-            // Update the batch information
             Batch updatedBatch = batchService.saveOrUpdateBatch(batch);
 
-            // Return the updated batch
             return ResponseEntity.ok(updatedBatch);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);

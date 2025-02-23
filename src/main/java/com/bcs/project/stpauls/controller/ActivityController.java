@@ -34,7 +34,7 @@ public class ActivityController {
         return activity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Activity (exclusive)
+    // Add Activity
     @PostMapping("/add-activity")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity activity) {
         try {

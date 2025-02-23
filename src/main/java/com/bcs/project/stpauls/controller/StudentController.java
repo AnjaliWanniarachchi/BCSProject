@@ -42,7 +42,7 @@ public class StudentController {
         return student.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Student (exclusive)
+    // Add Student
     @PostMapping("/add-student")
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
         try {
@@ -62,18 +62,14 @@ public class StudentController {
     @PutMapping("/edit-student")
     public ResponseEntity<Student> editStudent(@RequestBody Student student) {
         try {
-            // Check if the student exists by ID
             Optional<Student> existingStudent = studentService.getStudentById(student.getStudentId());
 
             if (!existingStudent.isPresent()) {
-                // Return a 404 if the student doesn't exist
                 return ResponseEntity.notFound().build();
             }
 
-            // Update the student information
             Student updatedStudent = studentService.saveOrUpdateStudent(student);
 
-            // Return the updated student
             return ResponseEntity.ok(updatedStudent);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);

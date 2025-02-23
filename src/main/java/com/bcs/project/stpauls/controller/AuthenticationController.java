@@ -58,15 +58,12 @@ public class AuthenticationController {
     public ResponseEntity<?> generateResetToken(@RequestBody Map<String, String> request) {
         String email = request.get("email");
 
-        // Generate a unique token
         String token = UUID.randomUUID().toString();
         boolean tokenUpdated = userDetailsService.updateUserToken(email, token);
 
         if (tokenUpdated) {
-            // Return a response with the token and a success message
             return ResponseEntity.ok(Map.of("message", "Password reset token generated successfully.", "token", token));
         } else {
-            // Return an error response in case the token update fails
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("message", "Failed to generate reset token."));
         }

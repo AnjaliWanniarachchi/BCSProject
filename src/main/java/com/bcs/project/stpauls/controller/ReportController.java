@@ -33,14 +33,14 @@ public class ReportController {
     public ResponseEntity<Report> getReportById(@PathVariable Long id) {
         System.out.println("Fetching report with ID: " + id);
         if (id == 0) {
-            return ResponseEntity.badRequest().body(null);  // Prevent fetching with an invalid ID
+            return ResponseEntity.badRequest().body(null);
         }
 
         Optional<Report> report = reportService.getReportById(id);
         return report.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Report (exclusive)
+    // Add Report
     @PostMapping("/add-report")
     public ResponseEntity<Report> addReport(@RequestBody Report report) {
         try {
@@ -64,14 +64,11 @@ public class ReportController {
             Optional<Report> existingReport = reportService.getReportById(report.getReport_id());
 
             if (!existingReport.isPresent()) {
-                // Return a 404 if the report doesn't exist
                 return ResponseEntity.notFound().build();
             }
 
-            // Update the report information
             Report updatedReport = reportService.saveOrUpdateReport(report);
 
-            // Return the updated report
             return ResponseEntity.ok(updatedReport);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);

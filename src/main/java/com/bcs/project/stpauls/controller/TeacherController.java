@@ -35,7 +35,7 @@ public class TeacherController {
         return teacher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Teacher (exclusive)
+    // Add Teacher
     @PostMapping("/add-teacher")
     public ResponseEntity<Teacher> addTeacher(@RequestBody Teacher teacher) {
         try {

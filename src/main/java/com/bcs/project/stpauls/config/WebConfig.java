@@ -8,10 +8,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Allow all endpoints
-                .allowedOrigins("http://stpaulspreschool.s3-website.eu-north-1.amazonaws.com") // Allow Angular app's origin
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow specific HTTP methods
-                .allowedHeaders("*") // Allow all headers
-                .allowCredentials(true); // Allow credentials (cookies, etc.)
+        registry.addMapping("/**")
+                .allowedOrigins("http://stpaulspreschool.s3-website.eu-north-1.amazonaws.com")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 }

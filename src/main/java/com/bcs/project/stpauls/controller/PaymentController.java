@@ -59,7 +59,7 @@ public class PaymentController {
         return ResponseEntity.ok(payments);
     }
 
-    // Add Payment (exclusive)
+    // Add Payment
     @PostMapping("/add-payment")
     public ResponseEntity<Payment> addPayment(@RequestBody Payment payment) {
         try {

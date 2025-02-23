@@ -33,14 +33,14 @@ public class ClassController {
     public ResponseEntity<Classes> getClassById(@PathVariable Long id) {
         System.out.println("Fetching class with ID: " + id);
         if (id == 0) {
-            return ResponseEntity.badRequest().body(null);  // Prevent fetching with an invalid ID
+            return ResponseEntity.badRequest().body(null);
         }
 
         Optional<Classes> classes = classService.getClassById(id);
         return classes.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Class (exclusive)
+    // Add Class
     @PostMapping("/add-class")
     public ResponseEntity<Classes> addClass(@RequestBody Classes classes) {
         try {
@@ -60,18 +60,14 @@ public class ClassController {
     @PutMapping("/edit-class")
     public ResponseEntity<Classes> editClass(@RequestBody Classes classes) {
         try {
-            // Check if the class exists by ID
             Optional<Classes> existingClass = classService.getClassById(classes.getClass_id());
 
             if (!existingClass.isPresent()) {
-                // Return a 404 if the class doesn't exist
                 return ResponseEntity.notFound().build();
             }
 
-            // Update the class information
             Classes updatedClass = classService.saveOrUpdateClass(classes);
 
-            // Return the updated class
             return ResponseEntity.ok(updatedClass);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
