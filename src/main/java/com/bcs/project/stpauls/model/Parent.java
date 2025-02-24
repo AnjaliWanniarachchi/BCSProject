@@ -7,7 +7,7 @@ public class Parent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long parent_id;
+    private Long parentId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -20,19 +20,19 @@ public class Parent {
     private String email;
 
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "address")
     private String address;
 
     //getters and setters
 
-    public Long getParent_id() {
-        return parent_id;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setParent_id(Long parent_id) {
-        this.parent_id = parent_id;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getFirstName() {
@@ -59,12 +59,12 @@ public class Parent {
         this.email = email;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {
