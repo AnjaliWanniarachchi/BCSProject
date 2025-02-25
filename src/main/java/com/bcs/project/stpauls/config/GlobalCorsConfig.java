@@ -14,13 +14,13 @@ public class GlobalCorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin(FRONT_END_URL); // Allow your Angular app's origin
-        config.addAllowedHeader("*");                    // Allow all headers
-        config.addAllowedMethod("*");                    // Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
-        config.setAllowCredentials(true);                // Allow credentials (e.g., cookies, Authorization header)
+        config.addAllowedOrigin(FRONT_END_URL);
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config); // Apply configuration to all endpoints
+        source.registerCorsConfiguration("/**", config);
         System.out.println("CORS Filter initialized with allowed origin:" + FRONT_END_URL);
         return new CorsFilter(source);
     }
