@@ -23,20 +23,17 @@ public class ActivityController {
         return ResponseEntity.ok(activityservice.saveOrUpdateActivity(activity));
     }
 
-    // Get all Activities
     @GetMapping("/activities")
     public List<Activity> getAllActivities() {
         return activityservice.getAllActivities();
     }
 
-    // Get Activity by ID
     @GetMapping("/get-activity/{id}")
     public ResponseEntity<Activity> getActivityById(@PathVariable Long id) {
         Optional<Activity> activity = activityservice.getActivityById(id);
         return activity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Add Activity
     @PostMapping("/add-activity")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity activity) {
         try {
@@ -46,7 +43,6 @@ public class ActivityController {
         }
     }
 
-    // Delete Activity by ID
     @DeleteMapping("/delete-activity/{id}")
     public ResponseEntity<Void> deleteActivity(@PathVariable Long id) {
         activityservice.deleteActivity(id);
@@ -56,18 +52,11 @@ public class ActivityController {
     @PutMapping("/edit-activity")
     public ResponseEntity<Activity> editActivity(@RequestBody Activity activity) {
         try {
-            // Check if the activity exists by ID
             Optional<Activity> existingActivity = activityservice.getActivityById(activity.getActivity_id());
-
             if (!existingActivity.isPresent()) {
-                // Return a 404 if the activity doesn't exist
                 return ResponseEntity.notFound().build();
             }
-
-            // Update the activity information
             Activity updatedActivity = activityservice.saveOrUpdateActivity(activity);
-
-            // Return the updated activity
             return ResponseEntity.ok(updatedActivity);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
