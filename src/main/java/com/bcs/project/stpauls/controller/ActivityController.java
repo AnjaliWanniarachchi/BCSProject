@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200")
+import static com.bcs.project.stpauls.constants.Constants.FRONT_END_URL;
+
+@CrossOrigin(origins = FRONT_END_URL)
 @RestController
 public class ActivityController {
 
