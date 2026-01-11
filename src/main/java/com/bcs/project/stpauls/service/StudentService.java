@@ -32,9 +32,6 @@ public class StudentService {
         System.out.println("trying to get student with ID: " + id);
         Optional<Student> student = studentRepository.findById(id);
         System.out.println("Student object" + student);
-        if (!student.isPresent()) {
-            return Optional.empty();  // Or throw a custom exception
-        }
         return student;
     }
 
